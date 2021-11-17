@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Create
+{% endblock page_name %}
+
+
+{% block content %}
+<div class="container mx-auto my-32 flex flex-col border p-6 border-gray-400 w-1/2">
+
+    <form action="{% url 'posts:create' %}" method="POST">
+        {% csrf_token %}
+
+
+        <div class="mb-5">
+            <div class="mb-2">제목</div>
+            {{form.title}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">구하는 인원수</div>
+            <span class=" text-red-500 font-light">{{form.number_of_people.errors}}</span>
+            {{form.number_of_people}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">설명창</div>
+            {{form.explain}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">카테고리</div>
+            <div></div>{{form.OttType}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">모집여부</div>
+            <div class="">{{form.pending}}</div>
+        </div>
+
+        <button class="bg-red-400 w-full text-center py-5 text-white mt-7 shadow-sm rounded-sm">글 생성</button>
+    </form>
+
+
+</div>
+
+{% endblock content %}

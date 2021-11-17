@@ -1,0 +1,72 @@
+@tailwind base;
+
+.font-sans-kr { font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+@tailwind components;
+
+.nav_link{
+    @apply hover:border-gray-600 border-white border-b-2 flex items-center;
+    a{
+       @apply py-1 px-2;
+    }
+}
+
+.logo{
+    @apply flex flex-col mr-28 items-center py-5 w-28 h-28 rounded-full opacity-95 shadow-lg;
+}
+
+input{
+    @apply py-5 border border-gray-500 rounded-md mb-3 pl-3 w-full;
+}
+
+textarea{
+    @apply w-full border border-gray-500 rounded-md px-3 py-3
+}
+
+select{
+    @apply w-full py-3 border border-gray-500 rounded-md px-3
+}
+
+.center{
+    @apply flex justify-center;
+}
+
+@keyframes messageFadeIn{
+    0%{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    5%{
+        opacity: 1;
+        transform: translateY(30px);
+    }
+    95%{
+        opacity: 1;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.message{
+    animation: messageFadeIn ease-in-out 5s forwards;
+    &.error{
+        @apply bg-red-500;
+    }
+    &.debug{
+        @apply bg-gray-500;
+    }
+    &.info{
+        @apply bg-blue-500;
+    }
+    &.success{
+        @apply bg-green-500;
+    }
+    &.warning{
+        @apply bg-yellow-500;
+    }
+}
+
+@tailwind utilities;

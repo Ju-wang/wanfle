@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+{% block page_name %}
+{{post.host}}님의 게시물
+{% endblock page_name %}
+
+
+{% block content %}
+
+<div class="container">
+    <!-- get absolute url 추가  -->
+    <div class="mt-32 mx-48 border-b border-gray-500">
+        <span class="font-semibold flex mb-5 text-xl">{{post.title}}</span>
+        <!-- 인원수 수정 -->
+        <span class="flex mb-7 text-sm">구하는 인원수: {{post.number_of_people}}명</span>
+
+        <a href="{{post.host.get_absolute_url}}">
+            <div class="flex flex-col items-end mr-5">
+                <div
+                    class="h-10 w-10 bg-gray-700 rounded-full text-white flex justify-center py-1 overflow-hidden -mt-24 items-center">
+                    <span class="text-xl">{{post.host.first_name|first}}</span>
+                </div>
+                <div class="mt-3 text-sm">{{post.host.last_name}}{{post.host.first_name}}</div>
+            </div>
+        </a>
+
+        <div class="mb-20 flex border-t border-gray-500">
+            <p class="mt-20">{{post.explain}}</p>
+        </div>
+        {{post.OttType.first}}
+    </div>
+
+</div>
+
+
+{% if post.host == user %}
+<div class="flex justify-end mr-48 mt-3">
+    <a href="{% url 'posts:edit' post.pk %}"
+        class="bg-green-400 block text-white text-center rounded-md py-3 px-3 mr-3">수정하기
+    </a>
+    <a href="{% url 'posts:delete' post.pk %}" class="bg-red-400 block text-white text-center rounded-md py-3 px-3">삭제하기
+    </a>
+</div>
+{% endif %}
+
+
+<!-- <div class=" w-2/3 ml-28 -mt-36 border-b border-gray-500">
+
+</div> -->
+
+<div class="ml-48 w-2/3 mt-16 mb-24">
+    <span class="font-semibold text-lg">댓글</span>
+</div>
+
+<form action="{% url 'comments:create' post.pk %}" method="POST" class="w-1/2 ml-48 -mt-20">
+
+    {% csrf_token %}
+
+    {{form}}
+
+    <!-- <button class="bg-red-400 w-full text-center py-5 text-white mt-7 shadow-sm rounded-sm">댓글 남기기</button> -->
+    <button class="text-3xl ml-103vh -mt-10 text-gray-700"><i class="far fa-paper-plane"></i></button>
+</form>
+
+
+<div class="mt-44">
+
+
+    {% for comment in post.comments.all %}
+    <div class="ml-48 pb-36">
+        <a href="{{comment.user.get_absolute_url}}">
+            <div
+                class="h-12 w-12 bg-gray-700 rounded-full text-white flex justify-center py-1 overflow-hidden -mt-24 items-center">
+                <span class="text-lg">{{comment.user.first_name|first}}</span>
+            </div>
+        </a>
+
+
+        <div class="flex flex-col ml-16 -mt-12">
+            <span>{{comment.user.last_name}}{{comment.user.first_name}}</span>
+            <span class="text-sm text-gray-400">{{comment.created|date:'F Y'}}</span>
+            {% if comment.user == user %}
+            <div>
+                <a href="{% url 'comments:delete' post.pk comment.pk %}">
+                    <span class="text-red-500 text-sm">
+                        삭제하기
+                    </span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+
+        <div class=" w-100vh mt-7 border-b border-gray-500 pb-3">
+            <p>
+                {{comment}}
+            </p>
+        </div>
+
+
+
+
+
+    </div>
+    {% endfor %}
+
+
+</div>
+
+
+
+
+{% endblock content %}

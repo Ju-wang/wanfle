@@ -1,0 +1,23 @@
+{
+    "name": "wanfle",
+    "version": "1.0.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ju-wang/airbnb-clone1.git"
+    },
+    "scripts": {
+        "css": "gulp"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "autoprefixer": "^10.3.6",
+        "gulp": "^4.0.2",
+        "gulp-csso": "^4.0.1",
+        "gulp-postcss": "^9.0.1",
+        "gulp-sass": "^5.0.0",
+        "node-sass": "^6.0.1",
+        "sass": "^1.42.1",
+        "tailwindcss": "^2.2.16"
+    }
+}

@@ -1,0 +1,39 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans+KR:500&display=swap&subset=korean">
+
+    <title>
+        {% block page_name %}{% endblock page_name %}| Wanfle
+    </title>
+</head>
+
+<body class="font-sans-kr">
+    {% include 'partials/messages.html' %}
+    <header>
+        <div class="container max-w-full flex items-center justify-between px-8 h-16 fixed inset-0 bg-white shadow-wan">
+            <a class="text-3xl" href="{% url 'core:home' %}">
+                <i class="fab fa-weebly py-10 px-40"></i>
+            </a>
+
+            {% include 'nav.html' %}
+        </div>
+    </header>
+
+    {% block content %}{% endblock content %}
+
+    {% include 'partials/footer.html' %}
+
+
+
+
+
+</body>
+
+</html>

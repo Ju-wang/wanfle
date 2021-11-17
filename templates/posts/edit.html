@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+Edit
+{% endblock page_name %}
+
+
+{% block content %}
+<div class="container mx-auto my-32 flex flex-col border p-6 border-gray-400 w-1/2">
+
+    <form action="{% url 'posts:edit' post.pk %}" method="POST">
+        {% csrf_token %}
+
+        <div class="mb-5">
+            <div class="mb-2">{{form.title.label}}</div>
+            {{form.title}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">{{form.number_of_people.label}}</div>
+            <span class=" text-red-500 font-light">{{form.number_of_people.errors}}</span>
+            {{form.number_of_people}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">{{form.explain.label}}</div>
+            {{form.explain}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">카테고리</div>
+            <div></div>{{form.OttType}}
+        </div>
+
+        <div class="mb-5">
+            <div class="mb-2">{{form.pending.label}}</div>
+            <div class="">{{form.pending}}</div>
+        </div>
+
+
+        <button class="bg-red-400 w-full text-center py-5 text-white mt-7 shadow-sm rounded-sm">글 수정</button>
+    </form>
+
+
+</div>
+
+{% endblock content %}
