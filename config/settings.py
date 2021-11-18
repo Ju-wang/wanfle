@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-zbbni%#-c#(k=q5o@*jprdaud+tb%&sfe(sm(p%(fibx&-e=(^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["wanfle.eba-mxajfdwz.ap-northeast-2.elasticbeanstalk.com"]
 
 AUTH_USER_MODEL = "users.User"
 
