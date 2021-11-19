@@ -26,6 +26,14 @@ SECRET_KEY = 'django-insecure-zbbni%#-c#(k=q5o@*jprdaud+tb%&sfe(sm(p%(fibx&-e=(^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+AWS_S3_ACCESS_KEY_ID = "AKIAWPGJSIP3KBZPDOGF"
+AWS_S3_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "wanfle-LJW"
+AWS_AUTO_CREATE_BUCKET = True
+AWS_BUCKET_ACL = "public-read"
+
 ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = "users.User"
@@ -52,6 +60,7 @@ PROJECT_APPS = [
 
 THIRD_PARTY_APPS = [
     "django_seed",
+    "storages",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -135,8 +144,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '']
 
 MEDIA_URL = "/media/"
 

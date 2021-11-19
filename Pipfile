@@ -9,6 +9,8 @@ django-seed = "*"
 django-countries = "*"
 psycopg2-binary = "*"
 requests = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 awsebcli = "*"

@@ -1,3 +1,5 @@
 django
 django-seed
 Faker
+django-storages
+boto3
