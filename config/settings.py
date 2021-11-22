@@ -24,15 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zbbni%#-c#(k=q5o@*jprdaud+tb%&sfe(sm(p%(fibx&-e=(^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 AWS_S3_ACCESS_KEY_ID = "AKIAWPGJSIP3KBZPDOGF"
 AWS_S3_SECRET_ACCESS_KEY = "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"
-AWS_STORAGE_BUCKET_NAME = "wanfle-LJW"
-AWS_AUTO_CREATE_BUCKET = True
-AWS_BUCKET_ACL = "public-read"
+AWS_STORAGE_BUCKET_NAME = "wanfle"
+
 
 ALLOWED_HOSTS = ["*"]
 
@@ -143,9 +142,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '']
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+STATIC_URL = "https://{AWS_S3_CUSTOM_DOMAIN}/static"
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_URL = "/media/"
 
